@@ -1,17 +1,13 @@
 import { useContext, useState, useEffect } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { getZipCode } from "../services/api"
-// import { Login } from "./Login"
 
 export function Home() {
    const { logout } = useContext(AuthContext)
-
    const [zipCode, setZipCode] = useState("")
    const [result, setResult] = useState({})
 
-   useEffect(() => {
-      // console.log("teste")
-   }, [zipCode])
+   useEffect(() => {}, [zipCode])
 
    const getResulZipCode = async () => {
       if (zipCode === "") {
@@ -37,16 +33,10 @@ export function Home() {
 
    return (
       <div>
-         <h2>Welcome {localStorage.getItem("username")} ! </h2>
-         <input
-            type="text"
-            placeholder="Cep"
-            onChange={(e) => setZipCode(e.target.value)}
-         />
+         <h2>Seja Bem Vindo! {localStorage.getItem("username")} </h2>
+         <input type="text" placeholder="Cep" onChange={(e) => setZipCode(e.target.value)} />
          <br />
-         <br />
-         <button onClick={handleBuscar}>Buscar</button>{" "}
-         <button onClick={logout}>Sair</button>
+         <button onClick={handleBuscar}>Buscar</button> <button onClick={logout}>Sair</button>
          <ul className="teste123">
             {Object.keys(result).map((item) => (
                <li>
